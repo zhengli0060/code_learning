@@ -1,0 +1,12 @@
+#使用bnlearn：https://www.bnlearn.com/bnrepository/中的贝叶斯网络随机生成数据集
+import pyAgrum as gum
+import numpy as np
+import pandas as pd
+
+bn = gum.loadBN("asia.bif")
+
+data_matrix = gum.generateSample(bn, n=10000, with_labels=False, random_order=False)
+data_matrix = data_matrix[0]
+print(type(data_matrix))
+print(data_matrix)
+data_matrix.to_csv("python_gen_data_asia.csv",index=False)
